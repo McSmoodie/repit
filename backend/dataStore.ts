@@ -2,7 +2,7 @@ import fs from 'fs';
 const DB_PATH = './dataStore.json';
 
 export interface User {
-  id: number;
+  userId: number;
   username: string;
   email: string;
   password: string;
