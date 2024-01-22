@@ -1,3 +1,4 @@
+import { identifier } from '@babel/types';
 import { getData, setData } from './dataStore';
 import { emailExists, usernameExists, idExists, getId } from './helpers';
 
@@ -34,17 +35,16 @@ export function userRegister(
 }
 
 export function userFollow(
-  src: string,
-  dst: string
+  src: number,
+  dst: number
 ) {
-  if (!usernameExists(src) || !usernameExists(dst)) {
-    return { error: 'Username does not exist!'};
+  if (!idExists(src) || !idExists(dst)) {
+    return { error: 'User does not exist!'};
   }
-  const dstId = getId(dst);
   const store = getData();
   for (const user of store.users) {
-    if (user.username === src) {
-      user.following.push(dstId);
+    if (user.userId === src) {
+      user.following.push(dst);
     }
   }
 }
