@@ -1,4 +1,5 @@
 import { getData, setData } from './dataStore';
+import { isEmailUnique } from './helpers';
 
 interface UserId {
   userId: number;
@@ -25,17 +26,6 @@ export function userRegister(
     password: password, 
     following: []
   });
+  setData(store);
   return { userId: id };
-}
-
-function isEmailUnique(
-  email: string
-) {
-  const store = getData();
-  for (const user of store.users) {
-    if (email === user.email) {
-      return false;
-    }
-  }
-  return true;
 }
