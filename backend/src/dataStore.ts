@@ -1,6 +1,3 @@
-import fs from 'fs';
-const DB_PATH = './dataStore.json';
-
 export interface User {
   userId: number;
   username: string;
@@ -42,17 +39,13 @@ let data: DataStore = {
 
 // Use get() to access the data
 function getData(): DataStore {
-  if (fs.existsSync(DB_PATH)) {
-    const dbstr = fs.readFileSync(DB_PATH);
-    data = JSON.parse(String(dbstr));
-  }
   return data;
 }
 
 // Use set(newData) to pass in the entire data object, with modifications made
 function setData(newData: DataStore) {
-  const jsonstr = JSON.stringify(newData, null, 2);
-  fs.writeFileSync(DB_PATH, jsonstr);
+  data = newData;
 }
 
 export { getData, setData };
+

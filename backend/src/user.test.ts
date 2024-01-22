@@ -13,7 +13,7 @@ test('First test!!!', () => {
     groups: [],
     exercises: []
   });
-  const id = userRegister('test', 'adam', 'smith');
+  const id = userRegister('test', 'adam', 'smith').userId;
   store = getData();
   expect(store.users).toStrictEqual([
     {
