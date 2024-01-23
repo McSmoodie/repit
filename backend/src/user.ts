@@ -1,5 +1,5 @@
 import { getData, setData } from './dataStore';
-import { emailExists, usernameExists, idExists, getId } from './helpers';
+import { emailExists, usernameExists, idExists } from './helpers';
 
 interface UserId {
   userId: number;
