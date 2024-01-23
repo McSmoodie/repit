@@ -6,10 +6,10 @@ export function emailExists(
   const store = getData();
   for (const user of store.users) {
     if (email === user.email) {
-      return false;
+      return true;
     }
   }
-  return true;
+  return false;
 }
 
 export function usernameExists(
@@ -18,10 +18,10 @@ export function usernameExists(
   const store = getData();
   for (const user of store.users) {
     if (username === user.username) {
-      return false;
+      return true;
     }
   }
-  return true;
+  return false;
 }
 
 export function idExists(

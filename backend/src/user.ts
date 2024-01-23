@@ -1,4 +1,3 @@
-import { identifier } from '@babel/types';
 import { getData, setData } from './dataStore';
 import { emailExists, usernameExists, idExists, getId } from './helpers';
 
@@ -47,4 +46,5 @@ export function userFollow(
       user.following.push(dst);
     }
   }
+  return {};
 }
