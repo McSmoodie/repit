@@ -1,6 +1,5 @@
 import { clear } from '../other';
 import { userRegister, userFollow } from '../user';
-import { getData, setData } from '../dataStore';
 
 const ERROR = { error: expect.any(String) };
 
@@ -30,7 +29,6 @@ describe('Fail cases', () => {
 
 describe('Success cases', () => {
   test('Success', () => {
-    const store = getData();
     expect(userFollow(user1 ,user2)).toStrictEqual({});
   });
 });

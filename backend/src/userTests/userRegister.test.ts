@@ -1,6 +1,5 @@
 import { clear } from '../other';
 import { userRegister } from '../user';
-import { getData, setData } from '../dataStore';
 
 const ERROR = { error: expect.any(String) };
 const USERID = { userId: expect.any(Number) };
