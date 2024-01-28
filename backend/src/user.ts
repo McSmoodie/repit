@@ -1,4 +1,5 @@
 import { getData, setData } from './dataStore';
+import { emailExists, usernameExists, idExists } from './helpers';
 
 interface UserId {
   userId: number;
@@ -13,8 +14,11 @@ export function userRegister(
   password: string,
   username: string
 ): UserId | Error {
-  if (!isEmailUnique(email)) {
+  if (emailExists(email)) {
     return { error: 'Email is already in use!'};
+  }
+  if (usernameExists(username)) {
+    return { error: 'Username is already in use!'};
   }
   const store = getData();
   const id = Date.now()
@@ -25,17 +29,22 @@ export function userRegister(
     password: password, 
     following: []
   });
+  setData(store);
   return { userId: id };
 }
 
-function isEmailUnique(
-  email: string
+export function userFollow(
+  src: number,
+  dst: number
 ) {
+  if (!idExists(src) || !idExists(dst)) {
+    return { error: 'User does not exist!'};
+  }
   const store = getData();
   for (const user of store.users) {
-    if (email === user.email) {
-      return false;
+    if (user.userId === src) {
+      user.following.push(dst);
     }
   }
-  return true;
+  return {};
 }
